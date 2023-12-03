@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>바이비트와 바이낸스 선물 비트코인 캔들 차트</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>바이비트 비트코인 캔들 차트</h1>
+    <canvas id="bybitBitcoinChart" width="400" height="300"></canvas>
+    
+    <h1>바이낸스 선물 비트코인 캔들 차트</h1>
+    <canvas id="binanceFuturesBitcoinChart" width="400" height="300"></canvas>
+    
+    <script>
+        // 바이비트 비트코인 캔들 차트 데이터 가져오기
+        fetch("https://api.bybit.com/v2/public/kline/list?symbol=BTCUSD&interval=D&limit=100")
+            .then(response => response.json())
+            .then(data => {
+                var bybitChartData = {
+                    labels: data.result.map(item => item.open_time),
+                    datasets: [
+                        {
+                            label: '가격',
+                            data: data.result.map(item => ({
+                                t: item.open_time,
+                                o: item.open,
+                                h: item.high,
+                                l: item.low,
+                                c: item.close,
+                                v: item.volume
+                            })),
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                };
+                var bybitCtx = document.getElementById("bybitBitcoinChart").getContext("2d");
+                var bybitBitcoinChart = new Chart(bybitCtx, {
+                    type: 'candlestick',
+                    data: bybitChartData,
+                    options: {
+                        // 차트 옵션 설정
+                    }
+                });
+            })
+            .catch(error => console.log(error));
+
+        // 바이낸스 선물 비트코인 캔들 차트 데이터 가져오기
+        fetch("https://fapi.binance.com/fapi/v1/klines?symbol=BTCUSDT&interval=1d&limit=100")
+            .then(response => response.json())
+            .then(data => {
+                var binanceFuturesChartData = {
+                    labels: data.map(item => item[0]),
+                    datasets: [
+                        {
+                            label: '가격',
+                            data: data.map(item => ({
+                                t: item[0],
+                                o: item[1],
+                                h: item[2],
+                                l: item[3],
+                                c: item[4],
+                                v: item[5]
+                            })),
+                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                };
+                var binanceFuturesCtx = document.getElementById("binanceFuturesBitcoinChart").getContext("2d");
+                var binanceFuturesBitcoinChart = new Chart(binanceFuturesCtx, {
+                    type: 'candlestick',
+                    data: binanceFuturesChartData,
+                    options: {
+                        // 차트 옵션 설정
+                    }
+                });
+            })
+            .catch(error => console.log(error));
+    </script>
+</body>
+</html>

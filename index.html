@@ -3,163 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>거래소별 비트코인 캔들 차트</title>
+    <title>바이낸스 및 코인베이스 비트코인 및 이더리움 캔들 차트</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .link-container {
+            margin-bottom: 30px;
+        }
+
+        .link-container a {
+            font-size: 18px;
+            color: #fff;
+        }
+        .chart-container {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .chart-container > div {
+            flex: 1;
+            margin-right: 20px;
+            text-align: center;
+        }
+        
+        .chart-container > div:last-child {
+            margin-right: 0;
+        }
+        .video-link {
+            margin-bottom: 20px;
+        }
+        .link-container {
+            margin-bottom: 30px;
+            
+            text-align: center;
+        }
+
+        .link-container a {
+            font-size: 50px;
+        }
+    </style>
 </head>
 <body>
-    <h1>바이낸스 비트코인 캔들 차트</h1>
-    <canvas id="binanceBitcoinChart" width="400" height="300"></canvas>
-    
-    <h1>코인베이스 비트코인 캔들 차트</h1>
-    <canvas id="coinbaseBitcoinChart" width="400" height="300"></canvas>
-    
-    <h1>바이비트 비트코인 캔들 차트</h1>
-    <canvas id="bybitBitcoinChart" width="400" height="300"></canvas>
-    
-    <h1>바이낸스 선물 비트코인 캔들 차트</h1>
-    <canvas id="binanceFuturesBitcoinChart" width="400" height="300"></canvas>
-    
-    <script>
-        // 바이낸스 비트코인 캔들 차트 데이터 가져오기
-        fetch("https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1d&limit=100")
-            .then(response => response.json())
-            .then(data => {
-                var binanceChartData = {
-                    // 가져온 데이터를 가공하여 차트 데이터 형식에 맞게 설정
-                    labels: data.map(item => item[0]), // 시간 정보
-                    datasets: [
-                        {
-                            label: '가격',
-                            data: data.map(item => ({ 
-                                t: item[0], // 시간 정보
-                                o: item[1], // 시가
-                                h: item[2], // 고가
-                                l: item[3], // 저가
-                                c: item[4], // 종가
-                                v: item[5]  // 거래량
-                            })),
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            borderColor: 'rgba(255, 99, 132, 1)',
-                            borderWidth: 1
-                        }
-                    ]
-                };
-                var binanceCtx = document.getElementById("binanceBitcoinChart").getContext("2d");
-                var binanceBitcoinChart = new Chart(binanceCtx, {
-                    type: 'candlestick',
-                    data: binanceChartData,
-                    options: {
-                        // 차트 옵션 설정
-                    }
-                });
-            })
-            .catch(error => console.log(error));
+    <div class="header">
+        <h1>네비게이터</h1>
+    </div>
+    <div id="chart"></div>
+    <div class="chart-container">
+        <div>
+            <h1 style="text-align: center;">바이낸스 비트코인 캔들 차트</h1>
+            <div id="binanceBitcoinChart"></div>
+        </div>
+        <div>
+            <h1 style="text-align: center;">코인베이스 비트코인 캔들 차트</h1>
+            <div id="coinbaseBitcoinChart"></div>
+        </div>
+    </div>
+    <div class="chart-container">
+        <div>
+            <h1 style="text-align: center;">바이낸스 이더리움 캔들 차트</h1>
+            <div id="binanceEthereumChart"></div>
+        </div>
+        <div>
+            <h1 style="text-align: center;">코인베이스 이더리움 캔들 차트</h1>
+            <div id="coinbaseEthereumChart"></div>
+        </div>
+    </div>
+</div>
 
-        // 코인베이스 비트코인 캔들 차트 데이터 가져오기
-        fetch("https://api.coinbase.com/v2/prices/BTC-USD/historic?period=day&granularity=86400")
-            .then(response => response.json())
-            .then(data => {
-                var coinbaseChartData = {
-                    // 가져온 데이터를 가공하여 차트 데이터 형식에 맞게 설정
-                    labels: data.data.map(item => item.time), // 시간 정보
-                    datasets: [
-                        {
-                            label: '가격',
-                            data: data.data.map(item => ({ 
-                                t: item.time, // 시간 정보
-                                o: item.open, // 시가
-                                h: item.high, // 고가
-                                l: item.low, // 저가
-                                c: item.close, // 종가
-                                v: item.volume  // 거래량
-                            })),
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            borderColor: 'rgba(54, 162, 235, 1)',
-                            borderWidth: 1
-                        }
-                    ]
-                };
-                var coinbaseCtx = document.getElementById("coinbaseBitcoinChart").getContext("2d");
-                var coinbaseBitcoinChart = new Chart(coinbaseCtx, {
-                    type: 'candlestick',
-                    data: coinbaseChartData,
-                    options: {
-                        // 차트 옵션 설정
-                    }
-                });
-            })
-            .catch(error => console.log(error));
+<div id="links">
+    <div class="link-container">
+        <a href="https://www.youtube.com/@zzap9" target="_blank">짭구 유튜브</a>
+    </div>
+    <div class="link-container">
+        <a href="https://www.youtube.com/@wedomnbro" target="_blank">웨돔 유튜브</a>
+    </div>
+    <div class="link-container">
+        <a href="https://pokergosu.com" target="_blank">포커고수</a>
+    </div>
+</div>
 
-        // 바이비트 비트코인 캔들 차트 데이터 가져오기
-        fetch("https://api.bybit.com/v2/public/kline/list?symbol=BTCUSD&interval=D&limit=100")
-            .then(response => response.json())
-            .then(data => {
-                var bybitChartData = {
-                    // 가져온 데이터를 가공하여 차트 데이터 형식에 맞게 설정
-                    labels: data.result.map(item => item.open_time), // 시간 정보
-                    datasets: [
-                        {
-                            label: '가격',
-                            data: data.result.map(item => ({ 
-                                t: item.open_time, // 시간 정보
-                                o: item.open, // 시가
-                                h: item.high, // 고가
-                                l: item.low, // 저가
-                                c: item.close, // 종가
-                                v: item.volume  // 거래량
-                            })),
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 1
-                        }
-                    ]
-                };
-                var bybitCtx = document.getElementById("bybitBitcoinChart").getContext("2d");
-                var bybitBitcoinChart = new Chart(bybitCtx, {
-                    type: 'candlestick',
-                    data: bybitChartData,
-                    options: {
-                        // 차트 옵션 설정
-                    }
-                });
-            })
-            .catch(error => console.log(error));
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+        new TradingView.widget(
+            {
+                "width": 780,
+                "height": 410,
+                "symbol": "BINANCE:BTCUSDT", // 바이낸스 비트코인 심볼
+                "interval": "1",
+                "timezone": "Etc/UTC",
+                "theme": "dark",
+                "style": "1",
+                "locale": "kr",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "allow_symbol_change": true,
+                "container_id": "binanceBitcoinChart"
+            }
+        );
 
-        // 바이낸스 선물 비트코인 캔들 차트 데이터 가져오기
-        fetch("https://fapi.binance.com/fapi/v1/klines?symbol=BTCUSDT&interval=1d&limit=100")
-            .then(response => response.json())
-            .then(data => {
-                var binanceFuturesChartData = {
-                    // 가져온 데이터를 가공하여 차트 데이터 형식에 맞게 설정
-                    labels: data.map(item => item[0]), // 시간 정보
-                    datasets: [
-                        {
-                            label: '가격',
-                            data: data.map(item => ({ 
-                                t: item[0], // 시간 정보
-                                o: item[1], // 시가
-                                h: item[2], // 고가
-                                l: item[3], // 저가
-                                c: item[4], // 종가
-                                v: item[5]  // 거래량
-                            })),
-                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                            borderColor: 'rgba(153, 102, 255, 1)',
-                            borderWidth: 1
-                        }
-                    ]
-                };
-                var binanceFuturesCtx = document.getElementById("binanceFuturesBitcoinChart").getContext("2d");
-                var binanceFuturesBitcoinChart = new Chart(binanceFuturesCtx, {
-                    type: 'candlestick',
-                    data: binanceFuturesChartData,
-                    options: {
-                        // 차트 옵션 설정
-                    }
-                });
-            })
-            .catch(error => console.log(error));
+        new TradingView.widget(
+            {
+                "width": 780,
+                "height": 410,
+                "symbol": "COINBASE:BTCUSD", // 코인베이스 비트코인 심볼
+                "interval": "1",
+                "timezone": "Etc/UTC",
+                "theme": "dark",
+                "style": "1",
+                "locale": "kr",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "allow_symbol_change": true,
+                "container_id": "coinbaseBitcoinChart"
+            }
+        );
+        
+        new TradingView.widget(
+            {
+                "width": 780,
+                "height": 410,
+                "symbol": "BINANCE:ETHUSDT", // 바이낸스 이더리움 심볼
+                "interval": "1",
+                "timezone": "Etc/UTC",
+                "theme": "dark",
+                "style": "1",
+                "locale": "kr",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "allow_symbol_change": true,
+                "container_id": "binanceEthereumChart"
+            }
+        );
+        
+        new TradingView.widget(
+            {
+                "width": 780,
+                "height": 410,
+                "symbol": "COINBASE:ETHUSD", // 코인베이스 이더리움 심볼
+                "interval": "1",
+                "timezone": "Etc/UTC",
+                "theme": "dark",
+                "style": "1",
+                "locale": "kr",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "allow_symbol_change": true,
+                "container_id": "coinbaseEthereumChart"
+            }
+        );
     </script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js 로드 -->
 </body>
 </html>
