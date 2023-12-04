@@ -1,38 +1,36 @@
 /*상단*/
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
     height: 100px;
     background-color: #000000;
-    z-index: 100;
+    z-index: 1;
+    margin-top: -10px;
+}
+.header .nav-list a:hover {
+    background-color: #ddd; /* 배경색 설정 */
+    color: black; /* 텍스트 색상 변경 */
 }
 
-.nav-list {
+.header .nav-list {
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 100%;
     list-style: none;
 }
-.nav-list a{
-    text-decoration: none;
-    font-size: 2.5rem;
-    color: white;
-}
-.nav-list h1{
-    font-size: 1.2rem;
-}
-
-.nav-item {
-    margin: 0 10px;
-}
-
-.nav-item a {
+.header .nav-list a{
     text-decoration: none;
     color: #ffffff;
     font-weight: bold;
+    font-size: 1.5rem;
+}
+.header .nav-list h1{
+    font-size: 1.2rem;
+}
+
+.header .nav-item {
+    margin: 0 10px;
 }
 
 body {
@@ -41,37 +39,70 @@ body {
     margin: 0;
     padding: 0;
 }
+.wrapper {
+    display: flex;
+}
+
+/*사이드 바*/
+.sidebar {
+    flex: 0 0 300px;
+    background-color: #000000;
+}
+.sidebar ul {
+    list-style-type: none; /* 목록 스타일 제거 */
+    padding: 0; /* 패딩 제거 */
+    margin-top: 200px;
+    
+}
+
+.sidebar ul li a {
+    display: block; /* 링크를 블록 요소로 만들어 전체 영역에 호버 효과 적용 */
+    padding: 10px; /* 패딩 적용 */
+    text-decoration: none; /* 링크 밑줄 제거 */
+    color: black; /* 텍스트 색상 설정 */
+    font-size: 3rem;
+    text-align: center;
+    color: white;
+}
+
+.sidebar ul li a:hover {
+    background-color: #ddd; /* 배경색 설정 */
+}
+
+/*몸통*/
+.main-content {
+    width: calc(100% - 300px); /* 사이드바의 너비를 제외한 나머지 너비를 본문 컨텐츠의 너비로 설정 */
+}
 
 /*차트*/
+
+.Chart {
+    display: flex;
+    justify-content: center;
+    
+}
+
 .chart-container {
     display: flex;
-    margin-bottom: 20px;
     margin-top: 100px;
 }
 
 .chart-container > div {
     flex: 1;
-    margin-right: 20px;
+    margin-right: 5px;
     text-align: center;
+    
 }
 
 .chart-container > div:last-child {
     margin-right: 0;
 }
-/*차트 모바일*/
-@media (max-width: 1600px) {
-    .chart-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-  }
 
 /*링크*/
 #links {
     display: flex;
     justify-content: center;
+    margin-top: 100px;
 }
 
 .link-container {
@@ -104,4 +135,44 @@ body {
     text-decoration: none;
     color: #ffffff;
     font-weight: bold;
+}
+
+/*푸터*/
+footer {
+    background-color: #000000; /* 푸터 배경색 설정 */
+    padding: 20px; /* 푸터 패딩 설정 */
+    text-align: center; /* 푸터 내용 가운데 정렬 */
+    bottom: 0; /* 푸터를 화면 아래로 정렬합니다. */
+    width: 100%; /* 푸터의 너비를 100%로 설정합니다. */
+    font-size: 50px;
+    z-index: 1;
+}
+
+/********************모바일********************/
+/*차트 모바일*/
+@media (max-width: 1600px) {
+    .chart-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+
+
+#sidebarToggle {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    #sidebarToggle {
+        display: block;
+        zIndex: '100';
+    }
+
+    /* 1200px 미만의 화면에서는 사이드바를 숨깁니다. */
+    .sidebar {
+        display: none;
+    }
 }

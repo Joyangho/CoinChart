@@ -4,68 +4,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>바이낸스 및 코인베이스 비트코인 및 이더리움 캔들 차트</title>
+    <title>Coin High</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 </head>
 
 <body>
-    <header class="header">
-        <ul class="nav-list">
-            
-            <a href="https://www.highrunpokerclub.io" target="_blank" >COIN HIGH</a>
-            <li class="nav-item"><h1 href="#">바이낸스</h1></li>
-            <li class="nav-item"><h1 href="#">바이비트</h1></li>
-            <li class="nav-item"><h1 href="#">커뮤니티</h1></li>
-            <li class="nav-item"><h1 href="#">NFT</h1></li>
-            <li class="nav-item"><h1 href="#">뉴스</h1></li>
-        </ul>
-    </header>
-
-    <div class="Chart">
-        <div class="chart-container">
-            <div>
-                <h1>바이낸스 비트코인 현물 차트</h1>
-                <div id="binanceBitcoinChart"></div>
-            </div>
-            <div>
-                <h1>코인베이스 비트코인 현물 차트</h1>
-                <div id="coinbaseBitcoinChart"></div>
-            </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <!-- 사이드바 내용을 추가하세요 -->
+            <ul>
+                <li><a href="#">홈</a></li>
+                <li><a href="#">하이런</a></li>
+                <li><a href="#">김프</a></li>
+                <li><a href="#">지표</a></li>
+                <li><a href="#">뉴스</a></li>
+                <li><a href="#">NFT</a></li>
+            </ul>
         </div>
-        <div class="chart-container">
-            <div>
-                <h1>바이낸스 이더리움 현물 차트</h1>
-                <div id="binanceEthereumChart"></div>
+
+        <div class="main-content">
+            <header class="header">
+                <ul class="nav-list">
+                    <a href="https://www.highrunpokerclub.io" target="_blank">COIN HIGH</a>
+                    <li class="nav-item">
+                        <a href="#">바이낸스</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">바이비트</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">커뮤니티</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">NFT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">뉴스</a>
+                    </li>
+                    <button id="sidebarToggle" class="mobile-only">사이드바 토글</button> <!-- 사이드바 토글 버튼 추가 -->
+                </ul>
+            </header>
+            <div class="Chart">
+                <div class="chart-container">
+                    <div>
+                        <h1>차트1</h1>
+                        <div id="binanceBitcoinChart"></div>
+
+                        <h1>차트3</h1>
+                        <div id="binanceBitcoinChart30"></div>
+                    </div>
+                    <div>
+                        <h1>차트2</h1>
+                        <div id="binanceBitcoinChart5"></div>
+                        <h1>차트4</h1>
+                        <div id="binanceBitcoinChart60"></div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h1>코인베이스 이더리움 현물 차트</h1>
-                <div id="coinbaseEthereumChart"></div>
+
+            <div id="links">
+                <div class="link-container">
+                    <a href="https://www.youtube.com/@zzap9" target="_blank">짭구 유튜브</a>
+                </div>
+                <div class="link-container">
+                    <a href="https://www.youtube.com/@wedomnbro" target="_blank">웨돔 유튜브</a>
+                </div>
+                <div class="link-container">
+                    <a href="https://pokergosu.com" target="_blank">포커고수</a>
+                </div>
+                <div class="link-container">
+                    <a href="https://coinness.com" target="_blank">코인니스</a>
+                </div>
+                <div class="link-container">
+                    <a href="https://coinalyze.net/bitcoin/usdt/binance/open-interest-chart/btcusdt_perp_oi/"
+                        target="_blank">바이낸스 미체결약정</a>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="links">
-        <div class="link-container">
-            <a href="https://www.youtube.com/@zzap9" target="_blank">짭구 유튜브</a>
-        </div>
-        <div class="link-container">
-            <a href="https://www.youtube.com/@wedomnbro" target="_blank">웨돔 유튜브</a>
-        </div>
-        <div class="link-container">
-            <a href="https://pokergosu.com" target="_blank">포커고수</a>
-        </div>
-        <div class="link-container">
-            <a href="https://coinness.com" target="_blank">코인니스</a>
-        </div>
-        <div class="link-container">
-            <a href="https://coinalyze.net/bitcoin/usdt/binance/open-interest-chart/btcusdt_perp_oi/"
-                target="_blank">바이낸스 미체결약정</a>
-        </div>
-    </div>
-
+    <footer>
+        <p>Coin High</p>
+    </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/chart.js"></script>
 </body>
 
 </html>

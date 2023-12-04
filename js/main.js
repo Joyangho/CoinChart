@@ -1,67 +1,10 @@
-new TradingView.widget(
-    {
-        "width": 780,
-        "height": 410,
-        "symbol": "BINANCE:BTCUSDT", // 바이낸스 비트코인 심볼
-        "interval": "1",
-        "timezone": "Etc/UTC",
-        "theme": "dark",
-        "style": "1",
-        "locale": "kr",
-        "toolbar_bg": "#f1f3f6",
-        "enable_publishing": false,
-        "allow_symbol_change": true,
-        "container_id": "binanceBitcoinChart"
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+    var sidebar = document.querySelector('.sidebar');
+    if (sidebar.style.display === 'none') {
+        sidebar.style.display = 'block';
+        sidebar.style.width = '100%'; // 사이드바의 너비를 100%로 설정합니다.
+        sidebar.style.zIndex = '100'; // 사이드바를 최상위 레이어로 설정합니다.
+    } else {
+        sidebar.style.display = 'none';
     }
-);
-
-new TradingView.widget(
-    {
-        "width": 780,
-        "height": 410,
-        "symbol": "COINBASE:BTCUSD", // 코인베이스 비트코인 심볼
-        "interval": "1",
-        "timezone": "Etc/UTC",
-        "theme": "dark",
-        "style": "1",
-        "locale": "kr",
-        "toolbar_bg": "#f1f3f6",
-        "enable_publishing": false,
-        "allow_symbol_change": true,
-        "container_id": "coinbaseBitcoinChart"
-    }
-);
-
-new TradingView.widget(
-    {
-        "width": 780,
-        "height": 410,
-        "symbol": "BINANCE:ETHUSDT", // 바이낸스 이더리움 심볼
-        "interval": "1",
-        "timezone": "Etc/UTC",
-        "theme": "dark",
-        "style": "1",
-        "locale": "kr",
-        "toolbar_bg": "#f1f3f6",
-        "enable_publishing": false,
-        "allow_symbol_change": true,
-        "container_id": "binanceEthereumChart"
-    }
-);
-
-new TradingView.widget(
-    {
-        "width": 780,
-        "height": 410,
-        "symbol": "COINBASE:ETHUSD", // 코인베이스 이더리움 심볼
-        "interval": "1",
-        "timezone": "Etc/UTC",
-        "theme": "dark",
-        "style": "1",
-        "locale": "kr",
-        "toolbar_bg": "#f1f3f6",
-        "enable_publishing": false,
-        "allow_symbol_change": true,
-        "container_id": "coinbaseEthereumChart"
-    }
-);
+});
