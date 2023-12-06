@@ -1,0 +1,88 @@
+
+/*차트*/
+
+.Chart {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.chart-container {
+    display: flex;
+    margin-top: 100px;
+}
+
+.chart-container > div {
+    flex: 1;
+    margin-right: 5px;
+    text-align: center;
+    
+}
+
+.chart-container > div:last-child {
+    margin-right: 0;
+}
+
+/*차트 추가*/
+.chart-select-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    position: relative;
+  }
+  
+  .chart-select-wrapper select {
+    width: 5%;
+    height: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f3f3f3;
+    color: #333;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 80px; /* 50px의 탑 마진 추가 */
+  }
+  
+  .chart-select-wrapper::after {
+    content: "\25BC"; /* 화살표를 ▼로 표시 */
+    font-size: 0.8rem; /* 화살표의 크기 조정 */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #333; /* 화살표의 색상 설정 */
+  }
+  
+  .chart-select-wrapper select:hover {
+    background-color: #db9090;
+  }
+  
+  .chart-select-wrapper select:focus {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .chart-select-wrapper select option {
+    font-size: 1rem; /* 셀렉트 옵션의 폰트 크기를 1rem으로 설정 */
+    padding: 5px; /* 셀렉트 옵션의 패딩을 5px로 설정 */
+    height: 30px; /* 셀렉트 옵션의 높이를 30px로 설정 */
+  }
+  
+  .chart-select-wrapper select::-ms-expand {
+    display: inline-block; /* 화살표 버튼이 보이도록 변경 */
+    width: 2%; /* 화살표 버튼의 넓이 설정 */
+    height: 100%; /* 화살표 버튼의 높이 설정 */
+    background-color: transparent; /* 화살표 버튼의 배경색 설정 */
+    border: none;
+    position: absolute;
+    right: 5px; /* 화살표 버튼의 위치 설정 */
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  

@@ -60,8 +60,8 @@ body {
     padding: 10px; /* 패딩 적용 */
     text-decoration: none; /* 링크 밑줄 제거 */
     color: black; /* 텍스트 색상 설정 */
-    font-size: 3rem;
-    text-align: center;
+    font-size: 2rem;
+    text-align: right;
     color: white;
 }
 
@@ -74,29 +74,6 @@ body {
     width: calc(100% - 300px); /* 사이드바의 너비를 제외한 나머지 너비를 본문 컨텐츠의 너비로 설정 */
 }
 
-/*차트*/
-
-.Chart {
-    display: flex;
-    justify-content: center;
-    
-}
-
-.chart-container {
-    display: flex;
-    margin-top: 100px;
-}
-
-.chart-container > div {
-    flex: 1;
-    margin-right: 5px;
-    text-align: center;
-    
-}
-
-.chart-container > div:last-child {
-    margin-right: 0;
-}
 
 /*링크*/
 #links {

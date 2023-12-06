@@ -11,7 +11,7 @@ new TradingView.widget(
         "toolbar_bg": "#f1f3f6",
         "enable_publishing": false,
         "allow_symbol_change": true,
-        "container_id": "binanceBitcoinChart"
+        "container_id": "binanceBitcoinChart1"
     }
 );
 
@@ -28,7 +28,7 @@ new TradingView.widget(
         "toolbar_bg": "#f1f3f6",
         "enable_publishing": false,
         "allow_symbol_change": true,
-        "container_id": "binanceBitcoinChart5"
+        "container_id": "binanceBitcoinChart2"
     }
 );
 
@@ -45,7 +45,7 @@ new TradingView.widget(
         "toolbar_bg": "#f1f3f6",
         "enable_publishing": false,
         "allow_symbol_change": true,
-        "container_id": "binanceBitcoinChart30"
+        "container_id": "binanceBitcoinChart3"
     }
 );
 
@@ -62,9 +62,23 @@ new TradingView.widget(
         "toolbar_bg": "#f1f3f6",
         "enable_publishing": false,
         "allow_symbol_change": true,
-        "container_id": "binanceBitcoinChart60"
+        "container_id": "binanceBitcoinChart4"
     }
 );
+
+function toggleChart(count) {
+    for (let i = 1; i <= 4; i++) {
+        const chart = document.getElementById(`chart${i}`);
+        if (i <= count) {
+            chart.style.display = "block";
+        } else {
+            chart.style.display = "none";
+        }
+    }
+}
+
+// 초기에는 차트1만 표시
+showCharts(1);
 
 /*new TradingView.widget(
     {
